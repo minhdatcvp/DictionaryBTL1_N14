@@ -1,0 +1,32 @@
+.button1{
+    -fx-font-size: 50px;
+    -fx-background-color : black;
+}
+.root {
+    -fx-background-image: url("../image/backgound.png");
+    -fx-background-position : center center;
+    -fx-background-size: 800 600;
+}
+.logo{
+    -fx-background-image: url("../image/logo.jpg");
+    -fx-background-position : center center;
+    -fx-background-size: 100;
+}
+.logoData{
+    -fx-background-image: url("../image/logo.jpg");
+    -fx-background-position : center center;
+    -fx-background-size: 50;
+}
+.listWords{
+    -fx-font-size: 14px;
+ }
+ .admin {
+     -fx-background-image: url("../image/bgAdmin.jpg");
+     -fx-background-position : center center;
+     -fx-background-size: 800 600;
+ }
+.sound{
+     -fx-background-image: url("../image/sound.jpg");
+     -fx-background-position : center center;
+     -fx-background-size: 26;
+ }
