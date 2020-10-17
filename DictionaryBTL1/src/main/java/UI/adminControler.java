@@ -38,8 +38,13 @@ public class adminControler implements Initializable {
     private ObservableList<Word> wordsList;
 
     private static final File addWord = new File("src/main/java/Data/dictionaries.txt");
-    private void alertAdd(ActionEvent event){
-    }
+
+
+    /**
+     * Ham trở về search
+     * @param e
+     * @throws IOException
+     */
     public void goBack(ActionEvent e) throws IOException {
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
@@ -48,6 +53,12 @@ public class adminControler implements Initializable {
         Scene scene = new Scene(adminView);
         stage.setScene(scene);
     }
+
+    /**
+     * Thêm từ
+     * @param e
+     * @throws IOException
+     */
     public void addWords(ActionEvent e) throws IOException {
         if (textEnglish.getText() != null){
             Word wordsnew = new Word();
@@ -64,12 +75,12 @@ public class adminControler implements Initializable {
                 }
                 else {
                     if (!textEnglish.getText().equals(newWords.words[i].getWord_target())&& i==newWords.numberWords-1){
-                        wordsnew.setWord_target(textEnglish.getText());
+                        wordsnew.setWord_target(textEnglish.getText().toLowerCase());
                         wordsnew.setWord_explain(textVietnam.getText());
                         wordsList.add(wordsnew);
                         newWords.numberWords++;
                         newWords.words[newWords.numberWords-1] = new Word();
-                        newWords.words[newWords.numberWords-1].setWord_target(textEnglish.getText());
+                        newWords.words[newWords.numberWords-1].setWord_target(textEnglish.getText().toLowerCase());
                         newWords.words[newWords.numberWords-1].setWord_explain(textVietnam.getText());
                         dictionaryExportToFile(addWord);
                         Alert add = new Alert(Alert.AlertType.CONFIRMATION);
@@ -81,8 +92,6 @@ public class adminControler implements Initializable {
                         add.showAndWait();
                         textEnglish.setText(null);
                         textVietnam.setText(null);
-
-//                        System.out.println(newWords.words[newWords.numberWords-1].getWord_target());
                         break;
                     }
                 }
@@ -98,6 +107,12 @@ public class adminControler implements Initializable {
             add.showAndWait();
         }
     }
+
+    /**
+     * xóa từ
+     * @param e
+     * @throws IOException
+     */
     public void deleteWords(ActionEvent e) throws IOException {
         Word selected = table.getSelectionModel().getSelectedItem();
             wordsList.remove(selected);
@@ -124,6 +139,12 @@ public class adminControler implements Initializable {
             add.setHeaderText(null);
             add.showAndWait();
     }
+
+    /**
+     * sửa từ
+     * @param event
+     * @throws IOException
+     */
     public void editWords(ActionEvent event) throws IOException {
         if (textEnglish.getText() != null){
             Word wordsnew = new Word();
@@ -187,6 +208,12 @@ public class adminControler implements Initializable {
             add.showAndWait();
         }
     }
+
+    /**
+     * Ham initialize
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textEnglish.setText(null);
