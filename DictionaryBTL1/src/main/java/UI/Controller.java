@@ -15,6 +15,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javazoom.jl.decoder.JavaLayerException;
+import module.Dictionary;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -36,6 +38,31 @@ public class Controller implements Initializable{
     @FXML
     private Pane sound;
 
+    /**
+     * BinarySearch
+     * @param arr
+     * @param s
+     * @return
+     */
+    public int binarySearch(Dictionary arr , String s){
+        int l = 0;
+        int r = arr.numberWords- 1;
+        while(l <= r){
+            int mid  = l + (r - l) / 2;
+            int result = arr.words[mid].getWord_target().compareTo(s);
+            if(result == 0){
+                return mid;
+            }
+            if (result <= 0 ){
+                l = mid + 1;
+            }
+            if (result > 0){
+                r = mid - 1 ;
+            }
+        }
+        return -1;
+
+    }
     /**
      *Tìm chuỗi con chung dài nhất
      * @param str1
@@ -106,17 +133,8 @@ public class Controller implements Initializable{
         String tempWord = new String();
         input = textsearch.getText().toLowerCase();
         double lengInput = input.length() * 0.2;
-        Map<String,String> dictionary = new HashMap<>();
-        for (int i = 0;i< newWords.numberWords;i++){
-            dictionary.put(newWords.words[i].getWord_target() ,newWords.words[i].getWord_explain());
-        }
-        if (dictionary.containsKey(input)){
-            String line = dictionary.get(input);
-            line = line.replace("<br/>" , "\n");
-            line = line.replace("@" , " ");
-            textMeaning.setText(line);
-        }
-        else {
+        int res = binarySearch(newWords,input);
+        if (res == -1){
             for(int i= 0 ;i < newWords.numberWords;i++){
                 if(newWords.words[i].getWord_target().length() > input.length()-lengInput && newWords.words[i].getWord_target().length() < input.length()+lengInput){
                     int temp = getLongestCommonSubstring(input,newWords.words[i].getWord_target()).length();
@@ -126,8 +144,13 @@ public class Controller implements Initializable{
                     }
                 }
             }
-
             textsearch.setText(tempWord);
+        }
+        else {
+            String line = newWords.words[res].getWord_explain();
+            line = line.replace("<br/>" , "\n");
+            line = line.replace("@" , " ");
+            textMeaning.setText(line);
         }
     }
 
@@ -139,21 +162,12 @@ public class Controller implements Initializable{
     public void handle(KeyEvent event) throws IOException {
         int dem = 0;
         String tempWord = new String();
-        Map<String,String> dictionary = new HashMap<>();
-        for (int i = 0;i< newWords.numberWords;i++){
-            dictionary.put(newWords.words[i].getWord_target() ,newWords.words[i].getWord_explain());
-        }
         if (event.getCode().equals(KeyCode.ENTER)){
             String input = new String();
             input = textsearch.getText().toLowerCase();
             double lengInput = input.length() * 0.2;
-            if (dictionary.containsKey(input)){
-                String line = dictionary.get(input);
-                line = line.replace("<br/>" , "\n");
-                line = line.replace("@" , " ");
-                textMeaning.setText(line);
-            }
-            else {
+            int res = binarySearch(newWords,input);
+            if (res == -1){
                 for(int i= 0 ;i < newWords.numberWords;i++){
                     if(newWords.words[i].getWord_target().length() > input.length()-lengInput && newWords.words[i].getWord_target().length() < input.length()+lengInput){
                         int temp = getLongestCommonSubstring(input,newWords.words[i].getWord_target()).length();
@@ -164,6 +178,12 @@ public class Controller implements Initializable{
                     }
                 }
                 textsearch.setText(tempWord);
+            }
+            else {
+                String line = newWords.words[res].getWord_explain();
+                line = line.replace("<br/>" , "\n");
+                line = line.replace("@" , " ");
+                textMeaning.setText(line);
             }
         }
     }
