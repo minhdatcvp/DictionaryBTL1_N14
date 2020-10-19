@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" styleClass="admin" stylesheets="@../Style/style.css" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.adminControler">
+<AnchorPane fx:id="root" prefHeight="600.0" prefWidth="800.0" styleClass="admin" stylesheets="@../Style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.adminControler">
    <children>
       <TableView fx:id="table" layoutX="5.0" layoutY="52.0" opacity="0.8" prefHeight="537.0" prefWidth="579.0" tableMenuButtonVisible="true">
         <columns>
@@ -44,7 +44,7 @@
       <AnchorPane layoutX="149.0" layoutY="7.0" prefHeight="39.0" prefWidth="41.0" styleClass="logoData" stylesheets="@../Style/style.css" />
       <Label layoutX="203.0" layoutY="3.0" text="Dictinary DataBase">
          <font>
-            <Font name="VNI-Script-Italic" size="36.0" />
+            <Font name="Serif Italic" size="36.0" />
          </font>
       </Label>
       <Button layoutX="729.0" layoutY="200.0" mnemonicParsing="false" onAction="#editWords" prefHeight="39.0" prefWidth="44.0" style="-fx-background-color: yellow;" text="Edit">
