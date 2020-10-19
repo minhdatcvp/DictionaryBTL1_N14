@@ -21,7 +21,7 @@
       <AnchorPane layoutX="236.0" layoutY="29.0" prefHeight="64.0" prefWidth="70.0" styleClass="logo" stylesheets="@../Style/style.css" />
       <Label layoutX="327.0" layoutY="14.0" text="Dictionary" textFill="WHITE">
          <font>
-            <Font name="VNI-Script-Italic" size="72.0" />
+            <Font name="Serif Italic" size="72.0" />
          </font>
       </Label>
       <TextField fx:id="textsearch" layoutX="163.0" layoutY="131.0" onKeyPressed="#handle" prefHeight="40.0" prefWidth="400.0" promptText="Search">
@@ -30,7 +30,7 @@
          </font></TextField>
       <Button fx:id="buttonSearch" layoutX="576.0" layoutY="131.0" mnemonicParsing="false" onAction="#hamclick" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #f76c6c;" text="Search" textAlignment="JUSTIFY" textFill="#1f2833">
          <font>
-            <Font name=".VnTime Bold" size="18.0" />
+            <Font name="Serif Italic" size="18.0" />
          </font>
       </Button>
       <ListView fx:id="listWords" layoutX="571.0" layoutY="202.0" opacity="0.8" prefHeight="351.0" prefWidth="170.0" styleClass="listWords" stylesheets="@../Style/style.css" AnchorPane.topAnchor="202.0">
@@ -40,7 +40,7 @@
       </ListView>
       <Button layoutX="713.0" layoutY="29.0" mnemonicParsing="false" onAction="#changeSceneAdmin" style="-fx-background-color: white;" text="Admin" textFill="#659dbd">
          <font>
-            <Font name=".VnTime Bold" size="14.0" />
+            <Font name="Serif Italic" size="14.0" />
          </font>
       </Button>
       <AnchorPane fx:id="sound" layoutX="505.0" layoutY="210.0" prefHeight="25.0" prefWidth="25.0" styleClass="sound" stylesheets="@../Style/style.css" />
